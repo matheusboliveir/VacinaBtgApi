@@ -1,7 +1,7 @@
 ﻿
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using VacinaBtgApi.Commands;
+using VacinaBtgApi.Commands.VacinaCommands;
 using VacinaBtgApi.Data;
 using VacinaBtgApi.Models;
 

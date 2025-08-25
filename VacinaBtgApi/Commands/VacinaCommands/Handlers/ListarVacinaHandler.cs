@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using VacinaBtgApi.Commands.VacinaCommands;
 using VacinaBtgApi.Data;
 using VacinaBtgApi.Models;
 
-namespace VacinaBtgApi.Commands.Handlers
+namespace VacinaBtgApi.Commands.VacinaCommands.Handlers
 {
     public class ListarVacinaHandler : IRequestHandler<ListarVacinaCommand, IEnumerable<Vacina>>
     {

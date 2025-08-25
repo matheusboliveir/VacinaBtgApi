@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using VacinaBtgApi.Commands.VacinaCommands;
 using VacinaBtgApi.Data;
 using VacinaBtgApi.Models;
 
-namespace VacinaBtgApi.Commands.Handlers
+namespace VacinaBtgApi.Commands.VacinaCommands.Handlers
 {
     public class CriarVacinaHandler : IRequestHandler<CriarVacinaCommand, Vacina>
     {

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using VacinaBtgApi.Commands;
+using VacinaBtgApi.Commands.VacinaCommands;
 
 namespace VacinaBtgApi.Validators
 {
