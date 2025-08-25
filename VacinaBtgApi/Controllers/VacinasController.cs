@@ -33,6 +33,13 @@ namespace VacinaBtgApi.Controllers
             return Ok(vacina);
         }
 
+        [HttpDelete("Deletar/{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            await _mediator.Send(new DeletarVacinaCommand(id));
+            return NoContent();
+        }
+
         [HttpGet("Buscar/{id}")]
         public async Task<ActionResult<Vacina>> GetById(int id, [FromServices] VacinaDbContext context)
         {

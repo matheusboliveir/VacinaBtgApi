@@ -3,5 +3,5 @@ using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands
 {
-    public record ListarVacinaCommand(string? pessoaId) : IRequest<IEnumerable<Vacina>>;
+    public record ListarVacinaCommand(int? pessoaId) : IRequest<IEnumerable<Vacina>>;
 }

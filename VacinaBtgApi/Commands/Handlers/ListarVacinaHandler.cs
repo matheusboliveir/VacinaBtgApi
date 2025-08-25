@@ -22,10 +22,9 @@ namespace VacinaBtgApi.Commands.Handlers
                     .AsNoTracking()
                     .ToListAsync();
             }
-            int pessoaId = int.Parse(request.pessoaId);
             return await _context.Vacinas
                 .AsNoTracking()
-                .Include(v => v.Doses.Where(d => d.PessoaId == pessoaId))
+                .Include(v => v.Doses.Where(d => d.PessoaId == request.pessoaId))
                 .ToListAsync();
         }
     }
