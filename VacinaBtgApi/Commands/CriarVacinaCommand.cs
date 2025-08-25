@@ -3,5 +3,5 @@ using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands
 {
-    public record CriarVacinaCommand(string Nome, DateTime DataAplicacao, string Lote, string Fabricante) : IRequest<Vacina>;
+    public record CriarVacinaCommand(string nome, TipoVacinaEnum tipo, int numeroDose, int numeroReforco, bool semLimiteDose) : IRequest<Vacina>;
 }

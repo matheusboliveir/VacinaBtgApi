@@ -7,10 +7,11 @@ namespace VacinaBtgApi.Validators
     {
         public CriarVacinaValidator()
         {
-            RuleFor(x => x.Nome).NotEmpty();
-            RuleFor(x => x.DataAplicacao).LessThanOrEqualTo(DateTime.Today);
-            RuleFor(x => x.Lote).NotEmpty();
-            RuleFor(x => x.Fabricante).NotEmpty();
+            RuleFor(x => x.nome).NotEmpty();
+            RuleFor(x => x.tipo).IsInEnum();
+            RuleFor(x => x.numeroDose).GreaterThan(0);
+            RuleFor(x => x.numeroReforco).NotNull();
+            RuleFor(x => x.semLimiteDose).NotNull();
         }
     }
 }

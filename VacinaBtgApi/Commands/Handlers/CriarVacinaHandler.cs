@@ -17,10 +17,11 @@ namespace VacinaBtgApi.Commands.Handlers
         {
             var vacina = new Vacina
             {
-                Nome = request.Nome,
-                DataAplicacao = request.DataAplicacao,
-                Lote = request.Lote,
-                Fabricante = request.Fabricante
+                nome = request.nome,
+                tipo = request.tipo,
+                numeroDose = request.numeroDose,
+                numeroReforco = request.numeroReforco,
+                semLimiteDose = request.semLimiteDose,
             };
 
             _context.Vacinas.Add(vacina);
