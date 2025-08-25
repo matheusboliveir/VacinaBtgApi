@@ -25,12 +25,12 @@ namespace VacinaBtgApi.Controllers
             return StatusCode(201, pessoa);
         }
 
-        //[HttpPut("Editar")]
-        //public async Task<ActionResult<Vacina>> Editar([FromBody] EditarVacinaCommand command)
-        //{
-        //    Vacina vacina = await _mediator.Send(command);
-        //    return Ok(vacina);
-        //}
+        [HttpPut("Editar")]
+        public async Task<ActionResult<Pessoa>> Editar([FromBody] EditarPessoaCommand command)
+        {
+            Pessoa pessoa = await _mediator.Send(command);
+            return Ok(pessoa);
+        }
 
         //[HttpDelete("Deletar/{id}")]
         //public async Task<ActionResult> Deletar(int id)
