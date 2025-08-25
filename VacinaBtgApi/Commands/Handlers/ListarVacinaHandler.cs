@@ -1,0 +1,32 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using VacinaBtgApi.Data;
+using VacinaBtgApi.Models;
+
+namespace VacinaBtgApi.Commands.Handlers
+{
+    public class ListarVacinaHandler : IRequestHandler<ListarVacinaCommand, IEnumerable<Vacina>>
+    {
+        private readonly VacinaDbContext _context;
+
+        public ListarVacinaHandler(VacinaDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<Vacina>> Handle(ListarVacinaCommand request, CancellationToken cancellationToken)
+        {
+            if (request.pessoaId is null)
+            {
+                return await _context.Vacinas
+                    .AsNoTracking()
+                    .ToListAsync();
+            }
+            int pessoaId = int.Parse(request.pessoaId);
+            return await _context.Vacinas
+                .AsNoTracking()
+                .Include(v => v.Doses.Where(d => d.PessoaId == pessoaId))
+                .ToListAsync();
+        }
+    }
+}
