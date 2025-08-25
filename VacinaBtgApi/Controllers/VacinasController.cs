@@ -26,6 +26,13 @@ namespace VacinaBtgApi.Controllers
             return StatusCode(201, vacina);
         }
 
+        [HttpPut("Editar")]
+        public async Task<ActionResult<Vacina>> Editar([FromBody] EditarVacinaCommand command)
+        {
+            Vacina vacina = await _mediator.Send(command);
+            return Ok(vacina);
+        }
+
         [HttpGet("Buscar/{id}")]
         public async Task<ActionResult<Vacina>> GetById(int id, [FromServices] VacinaDbContext context)
         {
@@ -40,6 +47,8 @@ namespace VacinaBtgApi.Controllers
             return vacinas is not null && vacinas.Any() ? Ok(vacinas) : NotFound();
 
         }
+
+
     }
 
 }
