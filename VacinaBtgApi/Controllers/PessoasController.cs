@@ -32,19 +32,12 @@ namespace VacinaBtgApi.Controllers
             return Ok(pessoa);
         }
 
-        //[HttpDelete("Deletar/{id}")]
-        //public async Task<ActionResult> Deletar(int id)
-        //{
-        //    await _mediator.Send(new DeletarVacinaCommand(id));
-        //    return NoContent();
-        //}
-
-        //[HttpGet("Buscar/{id}")]
-        //public async Task<ActionResult<Vacina>> GetById(int id, [FromServices] VacinaDbContext context)
-        //{
-        //    var vacina = await context.Pessoas.FindAsync(id);
-        //    return vacina is not null ? Ok(vacina) : NotFound();
-        //}
+        [HttpDelete("Deletar/{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            await _mediator.Send(new DeletarPessoaCommand(id));
+            return NoContent();
+        }
 
         //[HttpGet("Listar")]
         //public async Task<ActionResult<IEnumerable<Vacina>>> Listar([FromQuery] ListarVacinaCommand command)
