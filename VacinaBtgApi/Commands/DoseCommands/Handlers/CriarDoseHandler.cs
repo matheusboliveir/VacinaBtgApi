@@ -41,8 +41,8 @@ namespace VacinaBtgApi.Commands.DoseCommands.Handlers
             Dose dose = new Dose
             {
                 numero = quantidadeDoses + 1,
-                Pessoa = pessoa,
-                Vacina = vacina,
+                PessoaId = pessoa.Id,
+                VacinaId = vacina.Id,
                 tipo = request.tipo,
             };
 

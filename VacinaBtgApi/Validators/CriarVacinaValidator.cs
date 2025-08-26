@@ -9,7 +9,7 @@ namespace VacinaBtgApi.Validators
         {
             RuleFor(x => x.nome).NotEmpty();
             RuleFor(x => x.tipo).IsInEnum();
-            RuleFor(x => x.numeroDose).GreaterThan(0);
+            RuleFor(x => x.numeroDose).GreaterThan(0).When(x => x.semLimiteDose == false);
             RuleFor(x => x.numeroReforco).NotNull();
             RuleFor(x => x.semLimiteDose).NotNull();
         }
