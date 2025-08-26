@@ -8,6 +8,14 @@ using VacinaBtgApi.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularLocalhost",
+        policy => policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
 builder.Services.AddDbContext<VacinaDbContext>(opt =>
     opt.UseSqlite("Data Source=Vacina.db"));
 
