@@ -8,7 +8,7 @@ using VacinaBtgApi.Validators;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<VacinaDbContext>(opt =>
-    opt.UseInMemoryDatabase("VacinaDb"));
+    opt.UseSqlite("Data Source=Vacina.db"));
 
 builder.Services.AddMediatR(typeof(Program).Assembly);
 
