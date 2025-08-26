@@ -1,7 +1,9 @@
 ﻿
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Commands.PessoaCommands;
+using VacinaBtgApi.Data;
 using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Controllers
@@ -39,13 +41,11 @@ namespace VacinaBtgApi.Controllers
             return NoContent();
         }
 
-        //[HttpGet("Listar")]
-        //public async Task<ActionResult<IEnumerable<Vacina>>> Listar([FromQuery] ListarVacinaCommand command)
-        //{
-        //    IEnumerable<Vacina> Pessoas = await _mediator.Send(command);
-        //    return Pessoas is not null && Pessoas.Any() ? Ok(Pessoas) : NotFound();
-
-        //}
+        [HttpGet("Listar")]
+        public async Task<ActionResult<IEnumerable<Pessoa>>> Listar([FromServices] VacinaDbContext context)
+        {
+            return await context.Pessoas.ToListAsync();
+        }
 
 
     }
