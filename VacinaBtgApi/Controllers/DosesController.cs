@@ -28,6 +28,12 @@ namespace VacinaBtgApi.Controllers
             return StatusCode(201, dose);
         }
 
+        [HttpDelete("Deletar/{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            await _mediator.Send(new DeletarDoseCommand(id));
+            return NoContent();
+        }
     }
 
 }
