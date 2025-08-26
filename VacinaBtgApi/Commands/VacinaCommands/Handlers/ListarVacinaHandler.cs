@@ -25,6 +25,7 @@ namespace VacinaBtgApi.Commands.VacinaCommands.Handlers
             }
             return await _context.Vacinas
                 .AsNoTracking()
+                .Where(v => v.Doses.Any(d => d.PessoaId == request.pessoaId))
                 .Include(v => v.Doses.Where(d => d.PessoaId == request.pessoaId))
                 .ToListAsync();
         }
