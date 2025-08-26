@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Data;
+using VacinaBtgApi.Filters;
 using VacinaBtgApi.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,9 +16,13 @@ builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<CriarVacinaValidator>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ApiExceptionFilter());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

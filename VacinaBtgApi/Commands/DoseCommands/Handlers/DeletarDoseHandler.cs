@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Commands.PessoaCommands;
 using VacinaBtgApi.Data;
+using VacinaBtgApi.Exceptions;
 using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands.DoseCommands.Handlers
@@ -22,7 +23,7 @@ namespace VacinaBtgApi.Commands.DoseCommands.Handlers
 
             if (dose == null)
             {
-                throw new Exception("Dose não encontrada");
+                throw new DomainException("Dose não encontrada");
             }
 
             _context.Doses.Remove(dose);

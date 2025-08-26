@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Data;
+using VacinaBtgApi.Exceptions;
 using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands.PessoaCommands.Handlers
@@ -23,7 +24,7 @@ namespace VacinaBtgApi.Commands.PessoaCommands.Handlers
 
             if (pessoa == null)
             {
-                throw new Exception("Pessoa não encontrada");
+                throw new DomainException("Pessoa não encontrada");
             }
 
             _context.Doses.RemoveRange(pessoa.Doses);

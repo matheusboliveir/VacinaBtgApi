@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Data;
+using VacinaBtgApi.Exceptions;
 using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands.DoseCommands.Handlers
@@ -19,13 +20,13 @@ namespace VacinaBtgApi.Commands.DoseCommands.Handlers
             Vacina? vacina = await _context.Vacinas.FirstOrDefaultAsync(v => v.Id == request.vacinaId, cancellationToken);
 
             if (vacina == null) {
-                throw new Exception("Vacina não cadastrada.");
+                throw new DomainException("Vacina não cadastrada.");
             }
 
             Pessoa? pessoa = await _context.Pessoas.FirstOrDefaultAsync(p => p.Id == request.pessoaId, cancellationToken);
 
             if (pessoa == null) {
-                throw new Exception("Pessoa não existe.");
+                throw new DomainException("Pessoa não existe.");
             }
 
             int quantidadeDoses = await _context.Doses
@@ -35,7 +36,7 @@ namespace VacinaBtgApi.Commands.DoseCommands.Handlers
 
             if (!vacina.semLimiteDose && quantidadeDoses >= limiteDose)
             {
-                throw new Exception("Limite de doses desta vacina e tipo atingido para essa pessoa.");
+                throw new DomainException("Limite de doses desta vacina e tipo atingido para essa pessoa.");
             }
 
             Dose dose = new Dose

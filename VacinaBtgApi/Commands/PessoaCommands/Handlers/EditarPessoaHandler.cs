@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using VacinaBtgApi.Commands.PessoaCommands;
 using VacinaBtgApi.Data;
+using VacinaBtgApi.Exceptions;
 using VacinaBtgApi.Models;
 
 namespace VacinaBtgApi.Commands.VacinaCommands.Handlers
@@ -21,7 +22,7 @@ namespace VacinaBtgApi.Commands.VacinaCommands.Handlers
 
             if (pessoa == null)
             {
-                throw new Exception("Pessoa não encontrada");
+                throw new DomainException("Pessoa não encontrada");
             }
 
             pessoa.nome = request.nome;
